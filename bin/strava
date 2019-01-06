@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+require 'gli'
+
+class App
+  extend GLI::App
+
+  program_desc 'Command-line client for Strava.'
+  version Strava::VERSION
+
+  switch %i[v verbose], desc: 'Produce verbose output.', default_value: false
+  flag %i[t token], desc: 'Strava access token.', default_value: ENV['STRAVA_ACCESS_TOKEN']
+
+  arguments :strict
+  subcommand_option_handling :normal
+
+  default_command :help
+end
+
+exit App.run(ARGV)

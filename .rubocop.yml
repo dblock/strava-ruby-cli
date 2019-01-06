@@ -1,0 +1,24 @@
+AllCops:
+  Exclude:
+    - vendor/**/*
+
+Naming/MethodName:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - 'lib/strava-ruby-cli.rb'
+
+Style/ModuleFunction:
+  EnforcedStyle: extend_self
+
+Style/Documentation:
+  Enabled: false
+
+Metrics:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 256
+
+inherit_from: .rubocop_todo.yml
