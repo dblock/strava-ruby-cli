@@ -8,6 +8,14 @@ module Strava
         super @client
       end
 
+      def run(args)
+        args.map do |arg|
+          rc = eval(arg)
+          puts rc
+          rc
+        end
+      end
+
       def start!
         Ripl.start(binding: binding, prompt: 'Strava> ')
       end

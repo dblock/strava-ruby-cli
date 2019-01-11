@@ -29,9 +29,15 @@ class App
   desc 'Opens a Strava console'
   command :console do |c|
     c.action do |_global_options, _options, _args|
-      access_token = $auth.access_token
-      console = Strava::Cli::Console.new(access_token)
-      console.start! if access_token
+      Strava::Cli::Console.new($auth.access_token).start!
+    end
+  end
+
+  desc 'Runs a command.'
+  arg_name 'command', :multiple
+  command :run do |c|
+    c.action do |_global_options, _options, args|
+      Strava::Cli::Console.new($auth.access_token).run(args)
     end
   end
 end

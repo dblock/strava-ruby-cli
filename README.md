@@ -11,6 +11,7 @@ A set of command-line tools for Strava [Strava API v3](https://developers.strava
 - [Installation](#installation)
 - [Usage](#usage)
   - [Authentication](#authentication)
+  - [Run Commands](#run-commands)
   - [Strava Console](#strava-console)
 - [Contributing](#contributing)
 - [Copyright and License](#copyright-and-license)
@@ -31,9 +32,35 @@ The client will fetch an access token. This will open a new browser window, navi
 
 You can note the access token and supply it via `--access_token` to avoid being prompted in the future.
 
+### Run Commands
+
+Use `strava run` to execute commands against the Strava API.
+
+```bash
+$ strava run athlete.username
+
+dblockdotorg
+```
+
+Because this is Ruby, you can could fetch all currently logged-in athlete attributes in JSON.
+
+```bash
+$ strava run athlete.to_json
+
+{"id":26462176,"username":"dblockdotorg", ...}
+```
+
+To retrieve activities you need the `activity:read` scope.
+
+```bash
+$ strava --scope=activity:read run athlete_activities.first.name
+
+TCS NYC Marathon 2018
+```
+
 ### Strava Console
 
-Use `strava console` to explore the Strava API.
+Use `strava console` to explore the Strava API interactively.
 
 ```bash
 $ strava console
