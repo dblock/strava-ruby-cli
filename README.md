@@ -10,8 +10,8 @@ A set of command-line tools for Strava [Strava API v3](https://developers.strava
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Strava OAuth](#strava-oauth)
-- [Resources](#resources)
+  - [Authentication](#authentication)
+  - [Strava Console](#strava-console)
 - [Contributing](#contributing)
 - [Copyright and License](#copyright-and-license)
 
@@ -23,12 +23,22 @@ gem install 'strava-ruby-cli'
 
 ## Usage
 
-### Strava OAuth
+### Authentication
 
-Use `strava oauth` to obtain a token from the command-line. This will open a new browser window, navigate to Strava, request the appropriate permissions, then handle OAuth in a local redirect. The token type, refresh token, access token and token expiration will be displayed in the browser.
+Strava commands require a Strava _Client ID_ and _Client Secret_ from [Your API Application](https://www.strava.com/settings/api). The command-line tool with prompt you for these or you can supply them with `--client_id` and `--client_secret` options.
+
+The client will fetch an access token. This will open a new browser window, navigate to Strava, request the appropriate permissions, then handle OAuth in a local redirect. The token type, refresh token, access token and token expiration will be displayed in the browser and subsequently used. You can note the access token and supply it via `--access_token` to avoid being prompted in the future.
+
+### Strava Console
+
+Use `strava console` to explore the Strava API.
 
 ```bash
-$ strava oauth token
+$ strava console
+
+Strava > athlete.name
+
+"Daniel Doubrovkine"
 ```
 
 ## Contributing

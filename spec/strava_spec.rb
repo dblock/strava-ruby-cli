@@ -21,4 +21,5 @@ describe Strava do
       expect(subject).to include 'strava - Command-line client for Strava.'
     end
   end
+  pending 'console'
 end

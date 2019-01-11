@@ -16,5 +16,6 @@ Gem::Specification.new do |s|
   s.licenses = ['MIT']
   s.summary = 'Strava API CLI.'
   s.add_dependency 'gli'
+  s.add_dependency 'ripl'
   s.add_dependency 'strava-ruby-client'
 end

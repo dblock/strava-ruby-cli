@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 require 'gli'
+require 'ripl'
+
+require_relative '../lib/strava-ruby-cli'
 
 class App
   extend GLI::App
@@ -8,12 +11,28 @@ class App
   version Strava::VERSION
 
   switch %i[v verbose], desc: 'Produce verbose output.', default_value: false
-  flag %i[t token], desc: 'Strava access token.', default_value: ENV['STRAVA_ACCESS_TOKEN']
+  flag %i[i client_id], desc: 'Strava client ID.', default_value: ENV['STRAVA_CLIENT_ID']
+  flag %i[s client_secret], desc: 'Strava client secret.', default_value: ENV['STRAVA_CLIENT_SECRET']
+  flag %i[t access_token], desc: 'Strava access token.', default_value: ENV['STRAVA_ACCESS_TOKEN']
 
   arguments :strict
   subcommand_option_handling :normal
 
   default_command :help
+
+  pre do |global_options, _command, options, _args|
+    options = global_options.dup
+    $auth = Strava::Cli::Auth.new(options)
+  end
+
+  desc 'Opens a Strava console'
+  command :console do |c|
+    c.action do |_global_options, _options, _args|
+      access_token = $auth.access_token
+      console = Strava::Cli::Console.new(access_token)
+      console.start! if access_token
+    end
+  end
 end
 
 exit App.run(ARGV)
