@@ -7,9 +7,10 @@ describe Strava do
       Strava::Shell.system!(['ruby', %("#{strava}")].join(' '))
     end
     it 'displays help' do
-      expect(subject).to include 'strava - Command-line client for Strava.'
+      expect(subject).to include 'strava - Command-line client for Strava'
     end
     it 'displays version' do
+      expect(subject).to include Strava::Cli::VERSION
       expect(subject).to include Strava::VERSION
     end
   end
@@ -18,7 +19,7 @@ describe Strava do
       Strava::Shell.system!(['ruby', %("#{strava}"), 'help'].join(' '))
     end
     it 'displays help' do
-      expect(subject).to include 'strava - Command-line client for Strava.'
+      expect(subject).to include 'strava - Command-line client for Strava'
     end
   end
   pending 'console'

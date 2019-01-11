@@ -1,11 +1,11 @@
 $LOAD_PATH.push File.expand_path('lib', __dir__)
-require 'strava/version'
+require 'cli/version'
 
 Gem::Specification.new do |s|
   s.name = 'strava-ruby-cli'
   s.bindir = 'bin'
   s.executables = ['strava']
-  s.version = Strava::VERSION
+  s.version = Strava::Cli::VERSION
   s.authors = ['Daniel Doubrovkine']
   s.email = 'dblock@dblock.org'
   s.platform = Gem::Platform::RUBY
