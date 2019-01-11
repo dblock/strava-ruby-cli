@@ -1,10 +1,10 @@
-Strava Command-Line Tools
-=========================
+Strava Command-Line Client
+==========================
 
 [![Gem Version](https://badge.fury.io/rb/strava-ruby-cli.svg)](https://badge.fury.io/rb/strava-ruby-cli)
 [![Build Status](https://travis-ci.org/dblock/strava-ruby-cli.svg?branch=master)](https://travis-ci.org/dblock/strava-ruby-cli)
 
-A set of command-line tools for Strava [Strava API v3](https://developers.strava.com).
+A command-line client for Strava [Strava API v3](https://developers.strava.com).
 
 ## Table of Contents
 
@@ -34,7 +34,7 @@ You can note the access token and supply it via `--access_token` to avoid being 
 
 ### Run Commands
 
-Use `strava run` to execute commands against the Strava API.
+Use `strava run` to execute commands against the Strava API. Everything in [strava-ruby-client](https://github.com/dblock/strava-ruby-client) is supported.
 
 ```bash
 $ strava run athlete.username
