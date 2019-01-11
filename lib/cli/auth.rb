@@ -5,6 +5,7 @@ module Strava
         @access_token = options[:access_token]
         @client_id = options[:client_id]
         @client_secret = options[:client_secret]
+        @scope = options[:scope]
       end
 
       def access_token
@@ -58,7 +59,7 @@ module Strava
         redirect_url = strava_client.authorize_url(
           redirect_uri: 'http://localhost:4242/',
           response_type: 'code',
-          scope: 'read_all,activity:read_all,profile:read_all,profile:write,activity:write'
+          scope: @scope
         )
 
         system 'open', redirect_url

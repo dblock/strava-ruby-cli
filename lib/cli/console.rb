@@ -9,7 +9,7 @@ module Strava
       end
 
       def start!
-        Ripl.start(binding: binding, prompt: 'Strava > ')
+        Ripl.start(binding: binding, prompt: 'Strava> ')
       end
     end
   end

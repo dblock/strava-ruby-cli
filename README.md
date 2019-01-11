@@ -25,9 +25,11 @@ gem install 'strava-ruby-cli'
 
 ### Authentication
 
-Strava commands require a Strava _Client ID_ and _Client Secret_ from [Your API Application](https://www.strava.com/settings/api). The command-line tool with prompt you for these or you can supply them with `--client_id` and `--client_secret` options.
+Strava commands require a Strava _Client ID_ and _Client Secret_ from [Your API Application](https://www.strava.com/settings/api). The command-line tool with prompt you for these or you can supply them with `--client_id` and `--client_secret` options. You can also adjust access scope with `--scope`.
 
-The client will fetch an access token. This will open a new browser window, navigate to Strava, request the appropriate permissions, then handle OAuth in a local redirect. The token type, refresh token, access token and token expiration will be displayed in the browser and subsequently used. You can note the access token and supply it via `--access_token` to avoid being prompted in the future.
+The client will fetch an access token. This will open a new browser window, navigate to Strava, request the appropriate permissions, then handle OAuth in a local redirect. The token type, refresh token, access token and token expiration will be displayed in the browser and subsequently used.
+
+You can note the access token and supply it via `--access_token` to avoid being prompted in the future.
 
 ### Strava Console
 
@@ -36,7 +38,7 @@ Use `strava console` to explore the Strava API.
 ```bash
 $ strava console
 
-Strava > athlete.name
+Strava> athlete.name
 
 "Daniel Doubrovkine"
 ```
