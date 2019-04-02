@@ -24,6 +24,8 @@ class App
   pre do |global_options, _command, options, _args|
     options = global_options.dup
     $auth = Strava::Cli::Auth.new(options)
+    $verbose = options.fetch(:verbose)
+    true
   end
 
   desc 'Opens a Strava console'
@@ -39,6 +41,20 @@ class App
     c.action do |_global_options, _options, args|
       Strava::Cli::Console.new($auth.access_token).run(args)
     end
+  end
+
+  on_error do |e|
+    warn "Error: #{e.message}"
+    if $verbose
+      case e
+      when Strava::Errors::Fault then
+        warn ' ' + e.to_s
+        warn ' ' + e.errors.map(&:to_s).join("\n  ")
+      else
+        warn '  ' + e.backtrace.join("\n  ")
+      end
+    end
+    false
   end
 end
 
