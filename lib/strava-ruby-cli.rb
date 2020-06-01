@@ -1,5 +1,6 @@
 require 'open3'
 require 'English'
+require 'launchy'
 
 require 'strava-ruby-client'
 

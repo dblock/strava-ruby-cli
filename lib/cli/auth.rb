@@ -62,7 +62,7 @@ module Strava
           scope: @scope
         )
 
-        system 'open', redirect_url
+        Launchy.open redirect_url
 
         server.start
 
