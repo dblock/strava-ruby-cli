@@ -62,7 +62,9 @@ module Strava
           scope: @scope
         )
 
-        Launchy.open redirect_url
+        Launchy.open redirect_url do |err|
+          raise "Failed to browse to #{redirect_url}: #{err}"
+        end
 
         server.start
 
